@@ -1,3 +1,5 @@
+jQuery.noConflict();
+
 /** ====================== **/
 /** ===== PARAMETRES ===== **/
 /** ====================== **/
@@ -11,33 +13,33 @@ var couleurMax = '#ff0000';
 
 // Objets jQuery généraux
 var canvas = document.getElementById('visCanvas');
-var boutonVisuel = $('#boutonVisuel');
-var boutonTemporel = $('#boutonTemporel');
-var boutonJournal = $('#boutonJournal');
+var boutonVisuel = jQuery('#boutonVisuel');
+var boutonTemporel = jQuery('#boutonTemporel');
+var boutonJournal = jQuery('#boutonJournal');
 
 // Objets jQuery de la partie visuelle
-var spanCopies = $('#visNbCopies');
-var spanComparaisons = $('#visNbComparaisons');
-var visChoixTri = $('#visChoixTri');
-var visChoixAccelere = $('#visChoixAccelere');
-var visBoutonStart = $('#visBoutonStart');
-var visBoutonStep = $('#visBoutonStep');
-var visBoutonRestart = $('#visBoutonRestart');
-var visHint0 = $('#visHint0');
-var visHint1 = $('#visHint1');
-var visHint2 = $('#visHint2');
+var spanCopies = jQuery('#visNbCopies');
+var spanComparaisons = jQuery('#visNbComparaisons');
+var visChoixTri = jQuery('#visChoixTri');
+var visChoixAccelere = jQuery('#visChoixAccelere');
+var visBoutonStart = jQuery('#visBoutonStart');
+var visBoutonStep = jQuery('#visBoutonStep');
+var visBoutonRestart = jQuery('#visBoutonRestart');
+var visHint0 = jQuery('#visHint0');
+var visHint1 = jQuery('#visHint1');
+var visHint2 = jQuery('#visHint2');
 
 // Objets jQuery de la partie temporelle
-var tempTailleTab = $('#tempTailleTab');
-var tempNbTab = $('#tempNbTab');
-var tempChoixTri = $('#tempChoixTri');
-var tempBoutonStart = $('#tempBoutonStart');
-var tempResultats = $('#tempResultats');
+var tempTailleTab = jQuery('#tempTailleTab');
+var tempNbTab = jQuery('#tempNbTab');
+var tempChoixTri = jQuery('#tempChoixTri');
+var tempBoutonStart = jQuery('#tempBoutonStart');
+var tempResultats = jQuery('#tempResultats');
 
 // Objets jQuery du journal
-var logContent = $('#logContent');
-var logBoutonReset = $('#logBoutonReset');
-var logBoutonCopier = $('#logBoutonCopier');
+var logContent = jQuery('#logContent');
+var logBoutonReset = jQuery('#logBoutonReset');
+var logBoutonCopier = jQuery('#logBoutonCopier');
 
 /** ============================== **/
 /** ===== OBJETS AFFICHABLES ===== **/
@@ -84,9 +86,9 @@ textTemp.textAlign = 'center';
 //	* 2 : Journal
 function zap (n)
 {
-	n == 0 ? $("#visuel").show() : $("#visuel").hide();
-	n == 1 ? $("#temporel").show() : $("#temporel").hide();
-	n == 2 ? $("#journal").show() : $("#journal").hide();
+	n == 0 ? jQuery("#visuel").show() : jQuery("#visuel").hide();
+	n == 1 ? jQuery("#temporel").show() : jQuery("#temporel").hide();
+	n == 2 ? jQuery("#journal").show() : jQuery("#journal").hide();
 	display = n;
 }
 
@@ -807,13 +809,13 @@ tempBoutonStart.on('click', function() {
 		break;
 	}
 	// On affiche les résultats à la fin :
-	$('dd:nth-child(2)').text(string);
-	$('dd:nth-child(4)').text(t);
-	$('dd:nth-child(6)').text(nbTries+' sur '+n);
-	$('dd:nth-child(8)').text(tempsTotal/1000 + ' secondes');
-	$('dd:nth-child(10)').text(tempsCalcul/1000 + ' secondes');
-	$('dd:nth-child(12)').text(comparaisons);
-	$('dd:nth-child(14)').text(copies);
+	jQuery('dd:nth-child(2)').text(string);
+	jQuery('dd:nth-child(4)').text(t);
+	jQuery('dd:nth-child(6)').text(nbTries+' sur '+n);
+	jQuery('dd:nth-child(8)').text(tempsTotal/1000 + ' secondes');
+	jQuery('dd:nth-child(10)').text(tempsCalcul/1000 + ' secondes');
+	jQuery('dd:nth-child(12)').text(comparaisons);
+	jQuery('dd:nth-child(14)').text(copies);
 	// On enregistre dans le log (pour les "\r\n<br/>", cf. ligne 651, méthode trier) :
 	string += " appliqué à "+n+" tableau(x) de "+t+" élément(s).\r\n<br/>Temps écoulé : "+(tempsTotal/1000)+" s\r\n<br/>Temps de calcul : "+(tempsCalcul/1000)+" s\r\n<br/>Nombre de comparaisons : "+comparaisons+"\r\n<br/>Nombre de copies : "+copies+"\r\n\r\n";
 	log(string);
