@@ -7,14 +7,18 @@
 		{
 			"title" : "Document original dans lequel ce grain s'insère",
 			"uri" : "http://interstices.info/tri"
+		},
+		{
+			"title" : "Version originale en ligne,
+			"uri" : "http://math.hws.edu/TMCM/java/xSortLab"
 		}
+
 		],
 	"authors" : [
 		{			
 		        "name" : "Eck, David",
 			"role" : "auteur",
 			"mail" : "eck@hws.edu",
-			"url" : "http://math.hws.edu/TMCM/java/xSortLab",
 			"comment" : "version initiale en Java"
 		},
 		{			
