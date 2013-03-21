@@ -2,14 +2,14 @@
 "name": "Les méthodes de tri",
 "width": "800px",
 "height": "450px"
-	"comment" : "",
+	"comment" : "Simulation des différents algorithmes de tri . . pour une illustration didactique",
 	"links" : [
 		{
 			"title" : "Document original dans lequel ce grain s'insère",
 			"uri" : "http://interstices.info/tri"
 		},
 		{
-			"title" : "Version originale en ligne,
+			"title" : "Version originale en ligne",
 			"uri" : "http://math.hws.edu/TMCM/java/xSortLab"
 		}
 
