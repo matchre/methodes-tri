@@ -1,5 +1,87 @@
 {
-	"name": "Les méthodes de tri",
+"name": "Les méthodes de tri",
+"width": "800px",
+"height": "450px"
+	"comment" : "",
+	"links" : [
+		{
+			"title" : "Document original dans lequel ce grain s'insère",
+			"uri" : "http://interstices.info/tri"
+		}
+		],
+	"authors" : [
+		{			
+		        "name" : "Eck, David",
+			"role" : "auteur",
+			"mail" : "eck@hws.edu",
+			"url" : "http://math.hws.edu/TMCM/java/xSortLab",
+			"comment" : "version initiale en Java"
+		},
+		{			
+		        "name" : "Benhaj-Abdellatif, Tahia",
+			"role" : "auteur",
+			"comment" : "adaptation française"
+		},
+		{			
+		        "name" : "Gabarel, Nathan",
+			"role" : "auteur",
+			"comment" : "version HTLM5/JS"
+		},
+		{
+			"name" : "www.centralelilleprojets.fr",
+			"role" : "producteur"
+		}
+		],
+	"licenses" : [
+		{
+			"name" : "CC BY-NC-SA",
+			"uri" : "http://creativecommons.org/licenses/by-nc-sa/3.0/fr",
+			"comment" : "s'applique aux documents"
+		},
+		{
+			"name" : "CeCILL-C",
+			"uri" : "http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html",
+			"comment" : "s'applique au code source"
+		}
+		]
+}
+
+{
+	"name": "La machine de Turing",
 	"width": "800px",
-	"height": "450px"
+	"height": "600px",
+	"comment" : "",
+	"links" : [
+		{
+			"title" : "",
+			"uri" : "http://fr.wikipedia.org/wiki/Automate_fini"
+		},
+		{
+			"title" : "Un enseignant fait évoluer ce grain",
+			"uri" : "http://dichotomies.fr/2013/infomath/applets/machine-de-turing/"
+		}
+		],
+	"authors" : [
+		{			
+		        "name" : "Lehmann Dussout, Hugo",
+			"role" : "auteur",
+			"comment" : "version HTLM5/JS"
+		},
+		{
+			"name" : "www.centralelilleprojets.fr",
+			"role" : "producteur"
+		}
+		],
+	"licenses" : [
+		{
+			"name" : "CC BY-NC-SA",
+			"uri" : "http://creativecommons.org/licenses/by-nc-sa/3.0/fr",
+			"comment" : "s'applique aux documents"
+		},
+		{
+			"name" : "CeCILL-C",
+			"uri" : "http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html",
+			"comment" : "s'applique au code source"
+		}
+		]
 }
