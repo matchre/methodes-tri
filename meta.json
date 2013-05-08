@@ -2,6 +2,7 @@
 "name": "Les méthodes de tri",
 "width": "800px",
 "height": "450px",
+"link" : "http://interstices.info/tri",
 	"comment" : "Simulation des différents algorithmes de tri . . pour une illustration didactique",
 	"links" : [
 		{
