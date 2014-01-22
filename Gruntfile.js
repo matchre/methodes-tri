@@ -25,9 +25,9 @@ module.exports = function (grunt) {
     // Travis CI task.
     grunt.registerTask('test', 'jslint');
 
-    grunt.registerTask('meta_json_pretty_print', function() {
-        var metadata = grunt.file.readJSON('meta.json') ;
-        grunt.file.write('meta.json',JSON.stringify(metadata, null, 4));
-    })
+    grunt.registerTask('meta_json_pretty_print', function () {
+        var metadata = grunt.file.readJSON('meta.json');
+        grunt.file.write('meta.json', JSON.stringify(metadata, null, 4));
+    });
 
 };

@@ -1,4 +1,8 @@
-jQuery.noConflict();
+define(['jquery', 'tweenjs', 'jquery.zclip'],
+function (jQuery, createjs) {
+
+return {
+    start: function() {
 
 /** ====================== **/
 /** ===== PARAMETRES ===== **/
@@ -840,3 +844,9 @@ createjs.Ticker.addListener(stage);
 var tri = new Tri(5); // Par défaut : tri par sélection
 tri.init();
 createjs.Ticker.addListener(tri);
+
+}
+
+};
+
+});
