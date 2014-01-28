@@ -13,8 +13,8 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                     visChoixTri, visChoixAccelere,
                     visBoutonStart, visBoutonStep, visBoutonRestart,
                     visHint0, visHint1, visHint2,
-                    tempTailleTab, tempNbTab, tempChoixTri, tempBoutonStart, tempResultats,
-                    logResultats, logContent, logBoutonReset, logBoutonCopier,
+                    tempTailleTab, tempNbTab, tempChoixTri, tempBoutonStart,
+                    logContent, logBoutonReset, logBoutonCopier,
                     textTab, cadreTab,
                     cadreTemp, cadreTemp2, textTemp,
                     stage, tri, actionOK;
@@ -54,7 +54,6 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                 tempNbTab = jQuery('#tempNbTab');
                 tempChoixTri = jQuery('#tempChoixTri');
                 tempBoutonStart = jQuery('#tempBoutonStart');
-                tempResultats = jQuery('#tempResultats');
 
                 // Objets jQuery du journal
                 logContent = jQuery('#logContent');
@@ -105,9 +104,9 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
 
                 // function zap : int -> void
                 // Change le mode d'affichage du grain :
-                //	* 0 : Tri visuel
-                //	* 1 : Tri temporel
-                //	* 2 : Journal
+                // * 0 : Tri visuel
+                // * 1 : Tri temporel
+                // * 2 : Journal
                 function zap(n) {
                     switch (n) {
                     case 0:
@@ -132,17 +131,17 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                 // function newSet : int -> (int array * Container array)
                 // Retourne un ensemble aléatoire de valeurs à trier.
                 // Celui-ci est sous la forme d'un littéral contenant deux tableaux :
-                //	* valeur : le tableau des valeurs trier, ordonnées aléatoirement
-                //	* affichage : tableau contenant les représentations graphiques des valeurs du tableaux,
-                //                triées par valeur croissante (affichages[n] représente la valeur n).
+                // * valeur : le tableau des valeurs trier, ordonnées aléatoirement
+                // * affichage : tableau contenant les représentations graphiques des valeurs du tableaux,
+                //               triées par valeur croissante (affichages[n] représente la valeur n).
                 // L'argument facultatif taille permet de choisir la taille des données à trier.
                 // Par défaut il vaut 16. Si celui-ci est précisé, le tableau des représentations n'est pas renvoyé
                 // (dans ce cas, nous sommes en mode temporel, il est inutile).
                 function newSet(taille) {
                     var valeurs = [], affichages = [],
-                        b = typeof taille === 'undefined',  // b (pour boolean) indique si il faut renvoyer les représentations
+                        b = taille === undefined,  // b (pour boolean) indique si il faut renvoyer les représentations
                         t = !b ? taille : 16, // Taille par défaut : 16
-	                    nDispos = [], // nDispos contient les valeurs disponibles au tirage au sort, on l'initialise avec toutes les valeurs de 1 à t
+                        nDispos = [], // nDispos contient les valeurs disponibles au tirage au sort, on l'initialise avec toutes les valeurs de 1 à t
                         i, j, r, n,
                         conteneur, barre, texte;
 
@@ -164,14 +163,14 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                             // Le conteneur contient 2 éléments à afficher : la barre (shape) et la valeur correspondante(text, n).
                             conteneur = new createjs.Container();
                             barre = new createjs.Shape();
-				            barre.graphics.beginFill(couleurDefaut).drawRect(0, 0, 20, 6 * n);
-				            barre.x = 0;
-				            barre.y = -6 * n;
+                            barre.graphics.beginFill(couleurDefaut).drawRect(0, 0, 20, 6 * n);
+                            barre.x = 0;
+                            barre.y = -6 * n;
                             texte = new createjs.Text(n, "bold 12px sans-serif", "#000000");
-				            texte.x = 10;
-				            texte.y = -(6 * n + 12);
-				            texte.alpha = 0.6;
-				            texte.textAlign = "center";
+                            texte.x = 10;
+                            texte.y = -(6 * n + 12);
+                            texte.alpha = 0.6;
+                            texte.textAlign = "center";
 
                             // C'est le container qu'on déplacera et non pas la barre ou le texte séparément.
                             // Ce sont donc ses propriétés x et y qui nous intéressent pour le positionner.
@@ -263,12 +262,12 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
 
                     // function addAction : litteral -> void
                     // Cette méthode insère une animation dans la file d'actions. Une animation est représentée par un litteral dont les identifiants varient suivant le type d'action :
-                    //	* type : contient le type de l'animation sous forme d'un string ('colorier', 'deplacer', 'incrCopies', 'incrComparaisons', activerHints', 'text1', 'text2', 'pause'). Cet identifiant est _toujours_ pr?nt.
-                    //	* n : pour les actions Colorier et Déplacer, il représente la _valeur_ de l'élément à modifier (et non pas son indice). Pour les actions incrCopies et incrComparaisons il s'agit de la valeur ?lacer dans la zone de texte.
-                    //	* c : pour l'action Colorier il s'agit de la couleur (en hexadecimal par exemple) à utiliser pour colorier.
-                    //	* m : pour l'action Déplacer c'est la position à donner à l'élément dans le tableau (première ligne : 0 à 15 ; seconde ligne : 16 à 31 ; valeur temporaire : 32).
-                    //	* text : pour les actions Text1 et Text2 il s'agit du texte à placer dans la zone de texte.
-                    //	* r : valeur à retourner après l'exécution de l'action. La valeur par défaut est 0, voir la méthode doAction pour plus de précisions.
+                    // * type : contient le type de l'animation sous forme d'un string ('colorier', 'deplacer', 'incrCopies', 'incrComparaisons', activerHints', 'text1', 'text2', 'pause'). Cet identifiant est _toujours_ pr?nt.
+                    // * n : pour les actions Colorier et Déplacer, il représente la _valeur_ de l'élément à modifier (et non pas son indice). Pour les actions incrCopies et incrComparaisons il s'agit de la valeur ?lacer dans la zone de texte.
+                    // * c : pour l'action Colorier il s'agit de la couleur (en hexadecimal par exemple) à utiliser pour colorier.
+                    // * m : pour l'action Déplacer c'est la position à donner à l'élément dans le tableau (première ligne : 0 à 15 ; seconde ligne : 16 à 31 ; valeur temporaire : 32).
+                    // * text : pour les actions Text1 et Text2 il s'agit du texte à placer dans la zone de texte.
+                    // * r : valeur à retourner après l'exécution de l'action. La valeur par défaut est 0, voir la méthode doAction pour plus de précisions.
                     // En mode temporel les animations ne sont pas effectuées, on ne les ajoute pas à la file.
                     this.addAction = function (action) {
                         if (!this.modeTemporel) {
@@ -335,9 +334,9 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                         }
 
                         // Valeur de retour (action.r) :
-                        //	* 0 : défaut
-                        //	* 1 : pause en mode pas à pas
-                        //	* 2 : exécution immédiate de l'action suivante
+                        // * 0 : défaut
+                        // * 1 : pause en mode pas à pas
+                        // * 2 : exécution immédiate de l'action suivante
                         return action.r || 0;
                     };
 
@@ -362,10 +361,10 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                     // function deplacer : int -> int -> int -> void
                     // Effectue les opérations nécessaires lors du déplacement d'un élément dans le tableau.
                     // En mémoire et visuellement. Arguments :
-                    //	* n : indice dans le tableau de l'élément à déplacer (0-32)
-                    //	* m : indice dans le tableau de l'emplacement d'arrivée de l'élément.
-                    //        Si celui-ci n'est pas précisé on déplace vers l'espace vide.
-                    //	* r : retour que doit produire l'appel de doAction lors du traitement de l'animation.
+                    // * n : indice dans le tableau de l'élément à déplacer (0-32)
+                    // * m : indice dans le tableau de l'emplacement d'arrivée de l'élément.
+                    //       Si celui-ci n'est pas précisé on déplace vers l'espace vide.
+                    // * r : retour que doit produire l'appel de doAction lors du traitement de l'animation.
                     this.deplacer = function (n, m, r) {
                         m = (m >= 0 && m <= this.taille * 2) ? m : this.espaceVide; // Valeur par défaut de m : espaceVide
 
@@ -826,8 +825,7 @@ define(['jquery', 'tweenjs', 'jquery.zclip'],
                         // Pour que la méthode zclip fonctionne il faut que l'élément auquel elle est attachée (logBoutonCopier ici) soit visible, on effectue donc l'appel lors de l'affichage de la fenêtre du journal pour permettre son fonctionnement.
                         logBoutonCopier.zclip({
                             path: 'ZeroClipboard.swf', // Chemin vers le fichier ZeroClipboard.swf, à adapter
-                            copy: logContent.text(), // contenu à copier
-                            afterCopy: function () { } // annule l'alert apparaissant par défaut
+                            copy: logContent.text() // contenu à copier
                         });
                     }
                 });
