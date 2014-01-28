@@ -1,3 +1,4 @@
+/*global require: false */
 require.config({
     paths: {
         jquery: 'vendor/jquery-1.8.2.min',
@@ -21,6 +22,7 @@ require.config({
 });
 
 require(['grain'],
-function (grain) {
-    grain.start();
-});
+    function (grain) {
+        'use strict';
+        grain.start();
+    });

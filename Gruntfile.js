@@ -10,6 +10,9 @@ module.exports = function (grunt) {
 
         jslint: {
             files: [
+                'Gruntfile.js',
+                'js/grain.js',
+                'js/main.js',
                 'meta.json'
             ],
             options: {
